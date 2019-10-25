@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'pages/login_page/login_page.dart';
 
 class App extends StatelessWidget {
   @override
@@ -7,8 +8,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Login App',
       home: Scaffold(
-        backgroundColor: Colors.grey,
-        body: Text('Okela'),
+        body: LoginPage(),
       ),
     );
   }
