@@ -21,5 +21,3 @@ class LoginBloc with LoginValidator {
     _password.close();
   }
 }
-
-final loginBloc = LoginBloc();

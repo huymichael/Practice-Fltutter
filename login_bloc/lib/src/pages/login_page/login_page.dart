@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_bloc/blocs/login.bloc.dart';
+import '../../../providers/login.provider.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -9,14 +10,16 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
+    final loginBloc = LoginProvider.of(context);
+
     return Center(
       child: Container(
         margin: EdgeInsets.all(25),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            emailField(),
-            passwordField(),
+            emailField(loginBloc),
+            passwordField(loginBloc),
             Container(margin: EdgeInsets.only(top: 20)),
             loginButton(),
           ],
@@ -26,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-Widget emailField() {
+Widget emailField(LoginBloc loginBloc) {
   return StreamBuilder(
     stream: loginBloc.email,
     builder: (context, snapshot) {
@@ -42,7 +45,7 @@ Widget emailField() {
   );
 }
 
-Widget passwordField() {
+Widget passwordField(LoginBloc loginBloc) {
   return StreamBuilder(
     stream: loginBloc.password,
     builder: (context, snapshot) {
