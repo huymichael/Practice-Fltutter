@@ -4,66 +4,38 @@ import 'package:flutter/material.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    void playeSound(int soundNumber) {
+    void playSound(int soundNumber) {
       final player = AudioCache();
-      player.play('audio/note$soundNumber.wav');
+      player.play('note$soundNumber.wav');
+    }
+
+    Expanded buildToneKey({Color color, int soundNumber}) {
+      return Expanded(
+        child: FlatButton(
+          color: color,
+          child: Text(''),
+          onPressed: () {
+            playSound(soundNumber);
+          },
+        ),
+      );
     }
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              FlatButton(
-                color: Colors.red,
-                child: Text('Audio 1'),
-                onPressed: () {
-                  playeSound(1);
-                },
-              ),
-              FlatButton(
-                color: Colors.orange,
-                child: Text('Audio 2'),
-                onPressed: () {
-                  playeSound(2);
-                },
-              ),
-              FlatButton(
-                color: Colors.yellow,
-                child: Text('Audio 3'),
-                onPressed: () {
-                  playeSound(3);
-                },
-              ),
-              FlatButton(
-                color: Colors.green,
-                child: Text('Audio 4'),
-                onPressed: () {
-                  playeSound(4);
-                },
-              ),
-              FlatButton(
-                color: Colors.teal,
-                child: Text('Audio 5'),
-                onPressed: () {
-                  playeSound(5);
-                },
-              ),
-              FlatButton(
-                color: Colors.blue,
-                child: Text('Audio 6'),
-                onPressed: () {
-                  playeSound(6);
-                },
-              ),
-              FlatButton(
-                color: Colors.deepPurple,
-                child: Text('Audio 7'),
-                onPressed: () {
-                  playeSound(7);
-                },
-              ),
+              buildToneKey(color: Colors.red, soundNumber: 1),
+              buildToneKey(color: Colors.orange, soundNumber: 2),
+              buildToneKey(color: Colors.yellow, soundNumber: 3),
+              buildToneKey(color: Colors.green, soundNumber: 4),
+              buildToneKey(color: Colors.teal, soundNumber: 5),
+              buildToneKey(color: Colors.blue, soundNumber: 6),
+              buildToneKey(color: Colors.deepPurple, soundNumber: 7),
             ],
           ),
         ),
