@@ -19,10 +19,52 @@ class _StoryPageState extends State<StoryPage> {
         ),
       ),
       padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 15.0),
-      child: Center(
-        child: Text(
-          storyBrain.getStory(),
-          style: TextStyle(color: Colors.white, fontSize: 20),
+      child: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Expanded(
+              flex: 12,
+              child: Text(
+                storyBrain.getStory(),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: FlatButton(
+                color: Colors.red,
+                onPressed: () {},
+                child: Text(
+                  storyBrain.getChoice1(),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Expanded(
+              flex: 2,
+              child: FlatButton(
+                color: Colors.blue,
+                onPressed: () {},
+                child: Text(
+                  storyBrain.getChoice2(),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
