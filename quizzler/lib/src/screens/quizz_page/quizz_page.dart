@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
 
+import 'question.dart';
+
 class QuizzPage extends StatefulWidget {
   @override
   _QuizzPageState createState() => _QuizzPageState();
 }
 
 class _QuizzPageState extends State<QuizzPage> {
+  List<Icon> scoreKeeper = [];
+  int questionNumber = 0;
+  List<Question> questionBank = [
+    Question(
+        question: 'You can lead a cow down stairs but not up stairs.',
+        answer: false),
+    Question(
+        question: 'Approximately one quater of human bones are in the feet',
+        answer: true),
+    Question(question: 'A slug\'s blood is green', answer: true),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,7 +32,7 @@ class _QuizzPageState extends State<QuizzPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'This is where question text will go.',
+                questionBank[questionNumber].questionText,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -38,7 +52,17 @@ class _QuizzPageState extends State<QuizzPage> {
                 'True',
                 style: TextStyle(color: Colors.white, fontSize: 20.0),
               ),
-              onPressed: () {},
+              onPressed: () {
+                bool isCorrect = questionBank[questionNumber].questionAnswer;
+                if (isCorrect == true) {
+                  print('Right');
+                } else {
+                  print('Wrong');
+                  setState(() {
+                    questionNumber++;
+                  });
+                }
+              },
             ),
           ),
         ),
@@ -52,7 +76,17 @@ class _QuizzPageState extends State<QuizzPage> {
                 'False',
                 style: TextStyle(color: Colors.white, fontSize: 20.0),
               ),
-              onPressed: () {},
+              onPressed: () {
+                bool isCorrect = questionBank[questionNumber].questionAnswer;
+                if (isCorrect == false) {
+                  print('Right');
+                } else {
+                  print('Wrong');
+                }
+                setState(() {
+                  questionNumber++;
+                });
+              },
             ),
           ),
         ),
