@@ -1,5 +1,7 @@
 import 'package:bmi_calculator/constants/basic.contanst.dart';
+import 'package:bmi_calculator/execute/calculator_brain.dart';
 import 'package:bmi_calculator/ui/screens/result-screen/result_screen.dart';
+import 'package:bmi_calculator/ui/widgets/bottom-button.dart';
 import 'package:bmi_calculator/ui/widgets/container_card.dart';
 import 'package:bmi_calculator/ui/widgets/container_icon.dart';
 import 'package:bmi_calculator/ui/widgets/round_icon_button.dart';
@@ -209,19 +211,21 @@ class _InputScreenState extends State<InputScreen> {
               ],
             ),
           ),
-          GestureDetector(
+          BottomButton(
+            buttonText: 'CALCULATE',
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ResultScreen()));
+              CalculatorBrain calc =
+                  CalculatorBrain(height: height, weight: weight);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ResultScreen(
+                            bmiResult: calc.calculateBMI(),
+                            resultText: calc.getResult(),
+                            interpretation: calc.getInterpretation(),
+                          )));
             },
-            child: Container(
-              child: Center(child: Text('CALCULATE',style: kLargeLabelStyle,)),
-              color: kBottomContainerColor,
-              margin: EdgeInsets.only(top: 10),
-              width: double.infinity,
-              height: kBottomContainerHeight,
-            ),
-          )
+          ),
         ],
       ),
     );
