@@ -8,7 +8,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:656765107044:android:1608e30b1ef373a817d871",
+        "mobilesdk_app_id": "1:656765107044:android:40a79182536d1ff317d871",
         "android_client_info": {
           "package_name": "com.example.flash_chat"
         }
